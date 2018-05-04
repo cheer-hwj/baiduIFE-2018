@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS-task1</title>
+    <style>
+        .wrapper {
+            margin: 200px auto;
+            text-align: center;
+        }
+        .title {
+            position: relative;
+            transition: .5s;
+        }
+        .title::after {
+            position: absolute;
+            content: '';
+            height: 4px;
+            bottom: -10px;
+            left: 50%;
+            right: 50%;
+            background-color: rgb(21, 163, 163);
+            transition: inherit;
+        }
+        .checked {
+            color: rgb(21, 163, 163);
+        }
+        .checked::after {
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h2>
+            <label class="title">前端学院</label>
+        </h2>
+        <button>切换样式</button>
+    </div>
+    <script>
+        var wrapper = document.querySelector('.wrapper')
+        wrapper.querySelector('button').onclick = function () {
+            wrapper.querySelector('.title').classList.toggle('checked')
+        }
+    </script>
+</body>
+
+</html>
