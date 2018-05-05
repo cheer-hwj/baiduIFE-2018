@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS-task3</title>
+    <style>
+        body {
+            background-color: #c98d3f;
+        }
+
+        .wrapper {
+            margin: 200px auto;
+            width: 700px;
+            position: relative;
+        }
+
+        .ear {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .ear>div {
+            margin: 0 40px;
+            width: 150px;
+            height: 200px;
+            border-radius: 100% 10% 0 10%;
+            background-color: #fbf8f2;
+            border: solid 4px #331c10;
+            transform: rotate(-10deg);
+            transition: .5s ease;
+        }
+
+        .ear>div:last-child {
+            transform: rotate(10deg) scaleX(-1);
+            background-color: #ebab2f;
+        }
+
+        .face {
+            position: relative;
+            margin-top: -170px;
+            height: 500px;
+            border-radius: 50% 50% 30% 30%;
+            background-color: #fbf8f2;
+            border: solid 4px #331c10;
+            overflow: hidden;
+        }
+
+        /* 斑点 */
+
+        .face::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            top: -35px;
+            right: 20px;
+            background-color: #ebab2f;
+        }
+
+        .eye {
+            margin-top: 180px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .eye>div {
+            margin: 0 70px;
+            position: relative;
+            width: 28%;
+            height: 150px;
+            border-radius: 80% 80% 60% 60%;
+            background-color: #fbf8f2;
+            border: solid 4px #331c10;
+        }
+
+        .eye>div::before {
+            margin: 0 auto;
+            content: '';
+            display: block;
+            background: #000;
+            width: 50%;
+            height: 80%;
+            border-radius: 100%;
+            transition: .5s ease;
+        }
+
+        .eye>div::after {
+            position: absolute;
+            top: 60%;
+            bottom: -30px;
+            left: 0;
+            right: 0;
+            content: '';
+            background-color: #fbf8f2;
+            border: solid #331c10;
+            border-width: 4px 0 0 0;
+            border-radius: 50%;
+            transition: .5s ease;
+        }
+
+        .cute {
+            position: relative;
+            opacity: 0;
+            transition: .5s ease;
+        }
+
+        .cute>div {
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e27e89;
+            top: -50px;
+            left: 18%;
+        }
+
+        .cute>div:last-child {
+            left: auto;
+            right: 18%;
+        }
+
+        .nose {
+            margin: -30px auto 0 auto;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #000;
+        }
+
+        .nose::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 50%;
+            left: -50%;
+            right: -50%;
+            border-radius: 0 0 150% 150%;
+            background-color: #fbf8f2;
+        }
+
+        .mouth {
+            margin-top: -5px;
+            height: 40px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .mouth>div {
+            margin-top: -20px;
+            display: inline-block;
+            margin-left: -8px;
+            width: 80px;
+            height: 50px;
+            border-radius: 0 30% 50% 30%;
+            border: solid #000;
+            border-width: 0 8px 8px 0;
+            transition: .5s ease;
+        }
+
+        .mouth>div:last-child {
+            margin-right: -8px;
+            transform: scaleX(-1);
+        }
+
+        .wrapper:hover .ear>div {
+            transform: rotate(-25deg);
+        }
+
+        .wrapper:hover .ear>div:last-child {
+            transform: rotate(25deg) scaleX(-1);
+        }
+
+        .wrapper:hover .eye>div::before {
+            width: 40%;
+        }
+
+        .wrapper:hover .eye>div::after {
+            top: 48%;
+        }
+
+        .wrapper:hover .cute {
+            opacity: 1;
+        }
+
+        .wrapper:hover .mouth>div {
+            border-radius: 0 30% 50% 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="ear">
+            <div></div>
+            <div></div>
+        </div>
+        <div class="face">
+            <div class="eye">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="cute">
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div class="nose"></div>
+                <div class="mouth">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
