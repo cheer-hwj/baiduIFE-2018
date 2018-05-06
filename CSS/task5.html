@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS-task5</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        .stage {
+            margin: 200px auto;
+            text-align: center;
+
+            transform: scale(0.8, 0.8);
+            perspective: 800px;
+            perspective-origin: 50% 200px;
+        }
+
+        .cube {
+            position: relative;
+            margin: 0 auto;
+            width: 400px;
+            height: 400px;
+
+            transform-style: preserve-3d;
+            animation: rotatetest 6s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .stage:hover .cube {
+            animation-play-state: running;
+        }
+
+        .side {
+            overflow: hidden;
+            position: absolute;
+            opacity: 0.5;
+            height: 400px;
+            width: 400px;
+            background-color: #052f57;
+            border: 5px solid hsl(197, 100%, 59%);
+        }
+
+        .cube .side:first-child {
+            transform: rotateX(90deg) translateZ(200px);
+        }
+
+        .cube .side:nth-child(2) {
+            transform: translateZ(200px);
+        }
+
+        .cube .side:nth-child(3) {
+            transform: rotateY(90deg) translateZ(200px);
+        }
+
+        .cube .side:nth-child(4) {
+            transform: rotateY(180deg) translateZ(200px);
+        }
+
+        .cube .side:nth-child(5) {
+            transform: rotateY(-90deg) translateZ(200px);
+        }
+
+        .cube .side:nth-child(6) {
+            transform: rotateX(-90deg) translateZ(200px);
+        }
+
+        @keyframes rotatetest {
+            from {
+                transform: rotateY(360deg);
+            }
+            to {
+                transform: rotateY(0deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="cube">
+            <div class="side"></div>
+            <div class="side back"></div>
+            <div class="side"></div>
+            <div class="side"></div>
+            <div class="side"></div>
+            <div class="side"></div>
+        </div>
+    </div>
+</body>
+
+</html>
