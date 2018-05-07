@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS-task6</title>
+    <style>
+        .wrapper {
+            position: relative;
+            margin: auto;
+            width: 1000px;
+            height: 600px;
+            overflow: hidden;
+            background: url('2.jpg') no-repeat center/cover;
+        }
+
+        .current {
+            position: absolute;
+            width: 1000px;
+            height: 600px;
+            background: url('2.jpg') no-repeat center/cover;
+        }
+
+        .bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            background: rgba(0, 0, 0, .2);
+        }
+
+        .bar div {
+            position: relative;
+            margin: 10px;
+            flex: auto;
+            border: 1px solid #fff;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .bar div::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .3)
+        }
+
+        .bar div:hover::after {
+            background: rgba(0, 0, 0, 0)
+        }
+
+        .bar img {
+            width: 100%;
+            height: auto;
+        }
+
+        @keyframes png1 {
+            from {
+                left: -1000px;
+            }
+            to {
+                left: 0;
+            }
+        }
+
+        @keyframes png2 {
+            from {
+                top: 600px;
+            }
+            to {
+                top: 0;
+            }
+        }
+
+        @keyframes png3 {
+            from {
+                transform: scale(0.1);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes png4 {
+            from {
+                transform: scale(2);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes png5 {
+            from {
+                transform: rotate(-360deg) scale(0.1);
+            }
+            to {
+                transform: rotate(0deg) scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="current"></div>
+        <div class="bar">
+            <div>
+                <img src="1.jpg" alt="1">
+            </div>
+            <div>
+                <img src="2.jpg" alt="2">
+            </div>
+            <div>
+                <img src="3.jpg" alt="3">
+            </div>
+            <div>
+                <img src="4.jpg" alt="4">
+            </div>
+            <div>
+                <img src="5.jpg" alt="5">
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var wrapper = document.querySelector('.wrapper')
+            var current = wrapper.querySelector('.current')
+            var barlist = wrapper.querySelectorAll('.bar div')
+
+            var animations = [
+                'png1 0.5s ease-out',
+                'png2 0.5s ease-out',
+                'png3 1s ease-in',
+                'png4 1s ease-out',
+                'png5 0.7s ease-in-out',
+            ]
+
+            Array.prototype.forEach.call(barlist, function (val, index) {
+                var url = val.querySelector('img').getAttribute('src')
+                val.onclick = function () {
+                    current.style.backgroundImage = 'url(' + url + ')'
+                    current.style.animation = animations[index]
+                    setTimeout(function () {
+                        wrapper.style.backgroundImage = 'url(' + url + ')'
+                    }, 1000)
+                }
+            })
+        })()
+    </script>
+</body>
+
+</html>
