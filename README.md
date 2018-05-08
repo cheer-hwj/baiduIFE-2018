@@ -6,3 +6,5 @@
 * [task3](CSS/task3.html)
 * [task4](CSS/task4/task4.html)
 * [task5](CSS/task5.html)
+* [task6](CSS/task6/task6.html)
+* [task7](CSS/task7/task7.html)
