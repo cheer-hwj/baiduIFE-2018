@@ -1,0 +1,59 @@
+<template>
+    <div>
+        <input value="{=name=}" placeholder="姓名（string）">
+        <input value="{=inputAge=}" placeholder="年纪（number）" on-input="changeAge">
+        <input value="{=des=}" placeholder="简介（string）">
+
+        <fieldset>
+            <legend>信息：<button on-click="del">移除信息</button></legend>
+            <p>姓名：{{name}}</p>
+            <p>年龄：{{inputAge}}</p>
+            <p>简介：{{des}}</p>
+        </fieldset>
+    </div>
+</template>
+
+<script>
+    import {DataTypes} from 'san'
+    export default {
+        initData () {
+            return {
+                name: '',
+                inputAge: '',
+                age: 0,
+                des: ''
+            }
+        },
+        dataTypes: {
+            name: DataTypes.string,
+            des: DataTypes.string,
+            age: DataTypes.number,
+        },
+        del () {
+            this.data.set('name', '')
+            this.data.set('inputAge', '')
+            this.data.set('des', '')
+        },
+       changeAge () {
+           const age = this.data.get('inputAge')
+           const val = Number(age)
+           if(isNaN(val)) {
+               this.data.set('age', age)
+               console.log('has string')
+           }
+           else {
+                this.data.set('age', val)
+           }
+        }
+    }
+</script>
+
+<style>
+    input,button {
+        margin: .5rem;
+        padding: .5rem 1rem;
+    }
+    fieldset {
+        margin: 1rem .5rem;
+    }
+</style>

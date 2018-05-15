@@ -1,0 +1,80 @@
+<template>
+<div>
+    <div class="add"><input value="{=newName=}" placeholder="新的待审核人"><button on-click="addOne">添加</button></div>
+    <table>
+        <tr><th>姓名</th><th>审核状态</th><th>操作</th></tr>
+        <tr s-for="p, index in persons">
+            <td>{{p.name}}</td>
+            <td>{{p.status}}</td>
+            <td><button on-click="operate(p.status, index)">{{p.status == "待审核"?"审核":"删除"}}</button></td>
+        </tr>
+    </table>
+</div>
+</template>
+
+<script>
+export default {
+    initData () {
+        return {
+            persons: [
+                {
+                    name: '张三',
+                    status: '合格'
+                },
+                {
+                    name: '李四',
+                    status: '不合格'
+                },
+                {
+                    name: '王五',
+                    status: '待审核'
+                },
+                {
+                    name: '赵六',
+                    status: '待审核'
+                },
+                {
+                    name: '孙七',
+                    status: '待审核'
+                }
+            ],
+            newName: ''
+        }
+    },
+    operate (status, index) {
+        if(status == '待审核'){
+            this.data.set(`persons[${index}].status`, '合格')
+        }
+        else {
+            this.data.removeAt('persons', index)
+        }
+    },
+    addOne () {
+        if(this.data.get('newName', '')) {
+            this.data.push('persons', { name: this.data.get('newName'), status: '待审核' },)
+            this.data.set('newName', '')
+        }
+        else {
+            alert('请输入新增待审核人的姓名~')
+        }
+    }
+}
+</script>
+
+<style>
+    table {
+        margin: .5rem;
+        border-collapse: collapse;
+    }
+    th,td,input {
+        padding: .5rem 1.5rem;
+        border: 1px solid #aaa;
+    }
+    .add {
+        margin: 1rem 0;
+    }
+    .add button {
+        margin: .5rem;
+        padding: .5rem 1.5rem;
+    }
+</style>
